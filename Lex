@@ -1,0 +1,17 @@
+%{
+#include <stdio.h>
+#include <string.h>
+%}
+
+%%
+[a-zA-Z]+    { if(strcmp(yytext, "your_word_here") == 0) count++; }
+.            ;
+%%
+
+int count = 0;
+
+int main() {
+    yylex();
+    printf("Frequency of the word: %d\n", count);
+    return 0;
+}
